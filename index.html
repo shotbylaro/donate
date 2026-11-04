@@ -7,7 +7,7 @@
     <style>
         :root {
             --bg-color: #070707;
-            --card-bg: rgba(14, 14, 14, 0.90);
+            --card-bg: rgba(14, 14, 14, 0.88);
             --accent-color: #ffffff;
             --text-color: #ffffff;
             --text-dim: #d0d0d0;
@@ -22,9 +22,9 @@
         }
 
         body {
-            /* Silné ztmavení pozadí a zachování ostré fotky donate.jpg */
+            /* Zesvětlený přechod, aby byla holka na fotce pěkně vidět */
             background-image: 
-                linear-gradient(rgba(7, 7, 7, 0.85), rgba(7, 7, 7, 0.90)), 
+                linear-gradient(rgba(7, 7, 7, 0.55), rgba(7, 7, 7, 0.70)), 
                 url('donate.jpg');
             background-color: var(--bg-color);
             background-size: cover;
@@ -64,21 +64,13 @@
             z-index: 2;
         }
 
-        /* Pravý text v elegantním boxu pro dokonalou čitelnost */
+        /* Čistý pravý text přímo na fotce (bez tmavého boxu) */
         .side-text {
             display: none;
             max-width: 420px;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 24px 48px rgba(0,0,0,0.8);
         }
 
         .side-text h1 {
-            /* Masivní tiskový font jako na hlavním webu */
             font-family: Impact, Anton, Haettenschweiler, "Arial Black", sans-serif;
             font-size: 3.2rem;
             font-weight: 900;
@@ -87,14 +79,15 @@
             line-height: 0.95;
             margin-bottom: 1.2rem;
             color: #ffffff;
-            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
+            /* Výrazný stín pro garanci čitelnosti na fotce */
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(0, 0, 0, 1);
         }
 
         .side-text p {
             font-size: 1.05rem;
-            color: #e2e2e2;
+            color: #ffffff;
             line-height: 1.6;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 1);
         }
 
         /* Na počítačích rozestavíme kartu vlevo a text vpravo */
@@ -132,7 +125,7 @@
         .options-grid {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .btn {
@@ -161,12 +154,34 @@
             color: #ffffff;
         }
 
+        /* Stylový oddělovač "nebo" */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 0.4rem 0;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider span {
+            padding: 0 0.8rem;
+        }
+
         .qr-box {
             background: rgba(26, 26, 26, 0.7);
             border: 1px solid var(--border-color);
             border-radius: 18px;
             padding: 1.5rem;
-            margin-top: 0.2rem;
         }
 
         .currency-tabs {
@@ -244,7 +259,7 @@
 <body>
 
 <div class="wrapper">
-    <!-- Decentní text vpravo s odpovídajícím tiskovým fontem -->
+    <!-- Čistý text vpravo přímo na fotce -->
     <div class="side-text">
         <h1>Podpoř moji tvorbu</h1>
         <p>Každým příspěvkem mi pomáháš tvořit nový obsah, financovat vybavení a vymýšlet další random sidequesty pod značkou SHOTBYLARO. Díky moc za podporu!</p>
@@ -260,6 +275,11 @@
             <a href="https://revolut.me/romangrig" target="_blank" rel="noopener" class="btn btn-revolut">
                 <span>Podpořit přes Revolut</span>
             </a>
+
+            <!-- Oddělovač -->
+            <div class="divider">
+                <span>nebo</span>
+            </div>
 
             <!-- KB Box s přepínačem měn -->
             <div class="qr-box">
