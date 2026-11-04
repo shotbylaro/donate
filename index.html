@@ -217,4 +217,84 @@
         }
 
         .footer-back {
-            display:
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-back:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Decentní text vpravo pro PC -->
+    <div class="side-text">
+        <h1>Podpoř moji tvorbu</h1>
+        <p>Každým příspěvkem mi pomáháš tvořit nový obsah, financovat vybavení a vymýšlet další random sidequesty pod značkou SHOTBYLARO. Díky moc za podporu!</p>
+    </div>
+
+    <!-- Hlavní karta vlevo -->
+    <div class="container">
+        <div class="logo-title">SHOTBYLARO</div>
+        <p class="subtitle">Pokud chceš podpořit moji tvorbu, můžeš využít Revolut nebo převod v CZK či EUR.</p>
+
+        <div class="options-grid">
+            <!-- Revolut Tlačítko -->
+            <a href="https://revolut.me/romangrig" target="_blank" rel="noopener" class="btn btn-revolut">
+                <span>Podpořit přes Revolut</span>
+            </a>
+
+            <!-- KB Box s přepínačem měn -->
+            <div class="qr-box">
+                <div class="currency-tabs">
+                    <button class="tab-btn active" onclick="switchCurrency('czk')">CZK (Kč)</button>
+                    <button class="tab-btn" onclick="switchCurrency('eur')">EUR (€)</button>
+                </div>
+
+                <!-- CZK Sekce -->
+                <div id="currency-czk" class="currency-content active">
+                    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=SPD*1.0*ACC:CZ6501000000001239196100257*AM:*CC:CZK*MSG:Podpora%20ShotByLaro" alt="QR Kód CZK">
+                    <div class="account-details">
+                        Komerční banka (CZK)<br>
+                        <span>123-9196100257/0100</span>
+                    </div>
+                </div>
+
+                <!-- EUR Sekce -->
+                <div id="currency-eur" class="currency-content">
+                    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=BCD*002*1*VER:001*IFT:INTR*NM:ROMAN%20GRIGRASCENKO*IBAN:CZ6101000001239196100257*BIC:KOMBCZPPXXX*CCY:EUR*MSG:Podpora%20ShotByLaro" alt="QR Kód EUR">
+                    <div class="account-details">
+                        IBAN: <span>CZ6101000001239196100257</span><br>
+                        BIC/SWIFT: <span>KOMBCZPPXXX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://www.shotbylaro.eu" class="footer-back">← Zpět na hlavní web shotbylaro.eu</a>
+    </div>
+</div>
+
+<script>
+    function switchCurrency(type) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.currency-content').forEach(content => content.classList.remove('active'));
+
+        if (type === 'czk') {
+            document.querySelector('.currency-tabs button:nth-child(1)').classList.add('active');
+            document.getElementById('currency-czk').classList.add('active');
+        } else {
+            document.querySelector('.currency-tabs button:nth-child(2)').classList.add('active');
+            document.getElementById('currency-eur').classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
