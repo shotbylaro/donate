@@ -1,21 +1,169 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="0;url=https://revolut.me/romangrig">
-<title>Podpořit shotbylaro</title>
-<style>
-  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#070707;color:#eef0ef;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;text-align:center}
-  a{display:inline-block;margin-top:1rem;padding:.9rem 1.8rem;background:#4154d6;color:#fff;text-decoration:none;border-radius:12px;font-weight:700}
-</style>
-<script>location.replace("https://revolut.me/romangrig");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podpořit tvorbu — SHOTBYLARO</title>
+    <style>
+        :root {
+            --bg-color: #070707;
+            --card-bg: #121212;
+            --accent-color: #ffffff;
+            --text-color: #eef0ef;
+            --text-dim: #a0a0a0;
+            --border-color: #262626;
+            --revolut-blue: #0075ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .logo-title {
+            font-size: 1.25rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-revolut {
+            background: var(--revolut-blue);
+            color: #ffffff;
+        }
+
+        .qr-box {
+            background: #1a1a1a;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .qr-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .qr-code {
+            width: 180px;
+            height: 180px;
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 12px;
+            margin: 0 auto 0.8rem auto;
+            display: block;
+        }
+
+        .account-details {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        .footer-back {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-back:hover {
+            color: var(--accent-color);
+        }
+    </style>
 </head>
 <body>
-<div>
-  <h2>Přesměrovávám na Revolut…</h2>
-  <p>Pokud se nic nestalo, klikni na tlačítko:</p>
-  <a href="https://revolut.me/romangrig">Podpořit přes Revolut</a>
+
+<div class="container">
+    <div class="logo-title">SHOTBYLARO</div>
+    <p class="subtitle">Pokud chceš podpořit moji tvorbu, můžeš využít Revolut nebo naskenovat QR kód české banky.</p>
+
+    <div class="options-grid">
+        <!-- Revolut Tlačítko -->
+        <a href="https://revolut.me/romangrig" target="_blank" rel="noopener" class="btn btn-revolut">
+            <span>Podpořit přes Revolut</span>
+        </a>
+
+        <!-- QR Kód Komerční banky -->
+        <div class="qr-box">
+            <h3>QR Platba (CZK)</h3>
+            <!-- Generováno přímo z dat tvého účtu KB -->
+            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=SPD*1.0*ACC:CZ6501000000001239196100257*AM:*CC:CZK*MSG:Podpora%20ShotByLaro" alt="QR Kód pro platbu KB">
+            <div class="account-details">
+                Komerční banka<br>
+                <span>123-9196100257/0100</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://www.shotbylaro.eu" class="footer-back">← Zpět na hlavní web shotbylaro.eu</a>
 </div>
+
 </body>
 </html>
