@@ -7,7 +7,7 @@
     <style>
         :root {
             --bg-color: #070707;
-            --card-bg: rgba(18, 18, 18, 0.82);
+            --card-bg: rgba(18, 18, 18, 0.85);
             --accent-color: #ffffff;
             --text-color: #eef0ef;
             --text-dim: #a0a0a0;
@@ -22,8 +22,8 @@
         }
 
         body {
-            /* Rozostřené pozadí z hlavní fotky s tmavým překryvem */
-            background-image: linear-gradient(rgba(7, 7, 7, 0.85), rgba(7, 7, 7, 0.92)), url('https://shotbylaro.github.io/ pozadí nebo odkaz na fotku '); /* případně nahraď názvem souboru fotky, např. bg.jpg */
+            /* Pozadí z fotky donate.jpg s tmavým filtru a rozostřením */
+            background-image: linear-gradient(rgba(7, 7, 7, 0.75), rgba(7, 7, 7, 0.88)), url('donate.jpg');
             background-color: var(--bg-color);
             background-size: cover;
             background-position: center;
@@ -33,6 +33,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            /* Na mobilu výchozí zarovnání na střed */
             justify-content: center;
             padding: 1.5rem;
         }
@@ -48,6 +49,14 @@
             padding: 2.5rem 2rem;
             text-align: center;
             box-shadow: 0 24px 48px rgba(0,0,0,0.7);
+        }
+
+        /* Na počítačích (širší obrazovky) posuneme kartu více doleva */
+        @media (min-width: 768px) {
+            body {
+                justify-content: flex-start;
+                padding-left: 10vw;
+            }
         }
 
         .logo-title {
