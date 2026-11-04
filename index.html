@@ -22,7 +22,6 @@
         }
 
         body {
-            /* Pozadí z fotky donate.jpg s tmavým filtru a rozostřením */
             background-image: linear-gradient(rgba(7, 7, 7, 0.75), rgba(7, 7, 7, 0.88)), url('donate.jpg');
             background-color: var(--bg-color);
             background-size: cover;
@@ -33,9 +32,41 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* Na mobilu výchozí zarovnání na střed */
             justify-content: center;
             padding: 1.5rem;
+        }
+
+        /* Hlavní rozvržení na PC: rozestup mezi textem vlevo a kartou vpravo */
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1100px;
+            gap: 5rem;
+        }
+
+        /* Decentní svítící text vlevo (na mobilech skrytý) */
+        .side-text {
+            display: none;
+            max-width: 420px;
+        }
+
+        .side-text h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+        }
+
+        .side-text p {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
         .container {
@@ -49,13 +80,20 @@
             padding: 2.5rem 2rem;
             text-align: center;
             box-shadow: 0 24px 48px rgba(0,0,0,0.7);
+            flex-shrink: 0;
         }
 
-        /* Na počítačích (širší obrazovky) posuneme kartu více doleva */
-        @media (min-width: 768px) {
+        /* Zobrazení na počítačích – aktivuje boční text a zarovná vše do strany */
+        @media (min-width: 900px) {
             body {
                 justify-content: flex-start;
-                padding-left: 10vw;
+                padding-left: 8vw;
+            }
+            .wrapper {
+                justify-content: flex-start;
+            }
+            .side-text {
+                display: block;
             }
         }
 
@@ -71,7 +109,7 @@
         .subtitle {
             font-size: 0.95rem;
             color: var(--text-dim);
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
             line-height: 1.5;
         }
 
@@ -115,13 +153,39 @@
             margin-top: 0.2rem;
         }
 
-        .qr-box h3 {
-            font-size: 0.85rem;
+        .currency-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
             color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            padding: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .currency-content {
+            display: none;
+        }
+
+        .currency-content.active {
+            display: block;
         }
 
         .qr-code {
@@ -135,10 +199,16 @@
         }
 
         .account-details {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-dim);
             font-family: monospace;
-            letter-spacing: 0.5px;
+            line-height: 1.4;
+            word-break: break-all;
+        }
+
+        .account-details span {
+            color: var(--text-color);
+            font-weight: 600;
         }
 
         .footer-back {
@@ -157,29 +227,69 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="logo-title">SHOTBYLARO</div>
-    <p class="subtitle">Pokud chceš podpořit moji tvorbu, můžeš využít Revolut nebo naskenovat QR kód české banky.</p>
-
-    <div class="options-grid">
-        <!-- Revolut Tlačítko -->
-        <a href="https://revolut.me/romangrig" target="_blank" rel="noopener" class="btn btn-revolut">
-            <span>Podpořit přes Revolut</span>
-        </a>
-
-        <!-- QR Kód Komerční banky -->
-        <div class="qr-box">
-            <h3>QR Platba (CZK)</h3>
-            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=SPD*1.0*ACC:CZ6501000000001239196100257*AM:*CC:CZK*MSG:Podpora%20ShotByLaro" alt="QR Kód pro platbu KB">
-            <div class="account-details">
-                Komerční banka<br>
-                <span>123-9196100257/0100</span>
-            </div>
-        </div>
+<div class="wrapper">
+    <!-- Decentní svítící text vlevo pro PC -->
+    <div class="side-text">
+        <h1>Podpoř moji tvorbu</h1>
+        <p>Každým příspěvkem pomáháš s rozvojem mých mediálních projektů, nákupem nové techniky a realizací dalších vizí pod značkou SHOTBYLARO. Moc si toho vážím!</p>
     </div>
 
-    <a href="https://www.shotbylaro.eu" class="footer-back">← Zpět na hlavní web shotbylaro.eu</a>
+    <!-- Hlavní karta -->
+    <div class="container">
+        <div class="logo-title">SHOTBYLARO</div>
+        <p class="subtitle">Pokud chceš podpořit moji tvorbu, můžeš využít Revolut nebo převod v CZK či EUR.</p>
+
+        <div class="options-grid">
+            <!-- Revolut Tlačítko -->
+            <a href="https://revolut.me/romangrig" target="_blank" rel="noopener" class="btn btn-revolut">
+                <span>Podpořit přes Revolut</span>
+            </a>
+
+            <!-- KB Box s přepínačem měn -->
+            <div class="qr-box">
+                <div class="currency-tabs">
+                    <button class="tab-btn active" onclick="switchCurrency('czk')">CZK (Kč)</button>
+                    <button class="tab-btn" onclick="switchCurrency('eur')">EUR (€)</button>
+                </div>
+
+                <!-- CZK Sekce -->
+                <div id="currency-czk" class="currency-content active">
+                    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=SPD*1.0*ACC:CZ6501000000001239196100257*AM:*CC:CZK*MSG:Podpora%20ShotByLaro" alt="QR Kód CZK">
+                    <div class="account-details">
+                        Komerční banka (CZK)<br>
+                        <span>123-9196100257/0100</span>
+                    </div>
+                </div>
+
+                <!-- EUR Sekce -->
+                <div id="currency-eur" class="currency-content">
+                    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=BCD*002*1*VER:001*IFT:INTR*NM:ROMAN%20GRIGRASCENKO*IBAN:CZ6101000001239196100257*BIC:KOMBCZPPXXX*CCY:EUR*MSG:Podpora%20ShotByLaro" alt="QR Kód EUR">
+                    <div class="account-details">
+                        IBAN: <span>CZ6101000001239196100257</span><br>
+                        BIC/SWIFT: <span>KOMBCZPPXXX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://www.shotbylaro.eu" class="footer-back">← Zpět na hlavní web shotbylaro.eu</a>
+    </div>
 </div>
+
+<script>
+    function switchCurrency(type) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.currency-content').forEach(content => content.classList.remove('active'));
+
+        if (type === 'czk') {
+            document.querySelector('.currency-tabs button:nth-child(1)').classList.add('active');
+            document.getElementById('currency-czk').classList.add('active');
+        } else {
+            document.querySelector('.currency-tabs button:nth-child(2)').classList.add('active');
+            document.getElementById('currency-eur').classList.add('active');
+        }
+    }
+</script>
 
 </body>
 </html>
