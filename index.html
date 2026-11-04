@@ -7,11 +7,11 @@
     <style>
         :root {
             --bg-color: #070707;
-            --card-bg: #121212;
+            --card-bg: rgba(18, 18, 18, 0.82);
             --accent-color: #ffffff;
             --text-color: #eef0ef;
             --text-dim: #a0a0a0;
-            --border-color: #262626;
+            --border-color: rgba(255, 255, 255, 0.08);
             --revolut-blue: #0075ff;
         }
 
@@ -22,7 +22,12 @@
         }
 
         body {
+            /* Rozostřené pozadí z hlavní fotky s tmavým překryvem */
+            background-image: linear-gradient(rgba(7, 7, 7, 0.85), rgba(7, 7, 7, 0.92)), url('https://shotbylaro.github.io/ pozadí nebo odkaz na fotku '); /* případně nahraď názvem souboru fotky, např. bg.jpg */
             background-color: var(--bg-color);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-color);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
@@ -36,19 +41,21 @@
             width: 100%;
             max-width: 440px;
             background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.7);
         }
 
         .logo-title {
-            font-size: 1.25rem;
-            letter-spacing: 3px;
-            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--accent-color);
         }
 
@@ -56,7 +63,7 @@
             font-size: 0.95rem;
             color: var(--text-dim);
             margin-bottom: 2rem;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .options-grid {
@@ -72,9 +79,9 @@
             gap: 0.75rem;
             width: 100%;
             padding: 1rem 1.5rem;
-            border-radius: 12px;
+            border-radius: 14px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-decoration: none;
             transition: transform 0.2s ease, opacity 0.2s ease;
             cursor: pointer;
@@ -92,24 +99,25 @@
         }
 
         .qr-box {
-            background: #1a1a1a;
+            background: rgba(26, 26, 26, 0.6);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 1.5rem;
-            margin-top: 0.5rem;
+            margin-top: 0.2rem;
         }
 
         .qr-box h3 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .qr-code {
-            width: 180px;
-            height: 180px;
+            width: 170px;
+            height: 170px;
             background: #ffffff;
             padding: 8px;
             border-radius: 12px;
@@ -121,7 +129,7 @@
             font-size: 0.85rem;
             color: var(--text-dim);
             font-family: monospace;
-            word-break: break-all;
+            letter-spacing: 0.5px;
         }
 
         .footer-back {
@@ -153,8 +161,7 @@
         <!-- QR Kód Komerční banky -->
         <div class="qr-box">
             <h3>QR Platba (CZK)</h3>
-            <!-- Generováno přímo z dat tvého účtu KB -->
-            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=SPD*1.0*ACC:CZ6501000000001239196100257*AM:*CC:CZK*MSG:Podpora%20ShotByLaro" alt="QR Kód pro platbu KB">
+            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=SPD*1.0*ACC:CZ6501000000001239196100257*AM:*CC:CZK*MSG:Podpora%20ShotByLaro" alt="QR Kód pro platbu KB">
             <div class="account-details">
                 Komerční banka<br>
                 <span>123-9196100257/0100</span>
