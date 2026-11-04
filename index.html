@@ -13,6 +13,7 @@
             --text-dim: #d0d0d0;
             --border-color: rgba(255, 255, 255, 0.1);
             --revolut-blue: #3b55c2;
+            --kb-red: #e30613;
         }
 
         * {
@@ -22,7 +23,6 @@
         }
 
         body {
-            /* Zesvětlený přechod, aby byla holka na fotce pěkně vidět */
             background-image: 
                 linear-gradient(rgba(7, 7, 7, 0.55), rgba(7, 7, 7, 0.70)), 
                 url('donate.jpg');
@@ -64,28 +64,27 @@
             z-index: 2;
         }
 
-        /* Čistý pravý text přímo na fotce (bez tmavého boxu) */
+        /* Čistý pravý text s jemnějším a elegantnějším fontem */
         .side-text {
             display: none;
-            max-width: 420px;
+            max-width: 400px;
         }
 
         .side-text h1 {
-            font-family: Impact, Anton, Haettenschweiler, "Arial Black", sans-serif;
-            font-size: 3.2rem;
-            font-weight: 900;
-            letter-spacing: 2px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
             text-transform: uppercase;
-            line-height: 0.95;
-            margin-bottom: 1.2rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
             color: #ffffff;
-            /* Výrazný stín pro garanci čitelnosti na fotce */
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(0, 0, 0, 1);
         }
 
         .side-text p {
             font-size: 1.05rem;
-            color: #ffffff;
+            color: #e8e8e8;
             line-height: 1.6;
             text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 1);
         }
@@ -242,6 +241,12 @@
             font-weight: 600;
         }
 
+        /* Zvýraznění KB červené barvy */
+        .kb-brand {
+            color: var(--kb-red);
+            font-weight: 700;
+        }
+
         .footer-back {
             display: inline-block;
             margin-top: 2rem;
@@ -259,7 +264,7 @@
 <body>
 
 <div class="wrapper">
-    <!-- Čistý text vpravo přímo na fotce -->
+    <!-- Čistý text vpravo s jemnějším moderním fontem -->
     <div class="side-text">
         <h1>Podpoř moji tvorbu</h1>
         <p>Každým příspěvkem mi pomáháš tvořit nový obsah, financovat vybavení a vymýšlet další random sidequesty pod značkou SHOTBYLARO. Díky moc za podporu!</p>
@@ -292,17 +297,17 @@
                 <div id="currency-czk" class="currency-content active">
                     <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=SPD*1.0*ACC:CZ6501000000001239196100257*AM:*CC:CZK*MSG:Podpora%20ShotByLaro" alt="QR Kód CZK">
                     <div class="account-details">
-                        Komerční banka (CZK)<br>
+                        <span class="kb-brand">Komerční banka</span> (CZK)<br>
                         <span>123-9196100257/0100</span>
                     </div>
                 </div>
 
-                <!-- EUR Sekce -->
+                <!-- EUR Sekce (bez QR kódu) -->
                 <div id="currency-eur" class="currency-content">
-                    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=BCD*002*1*VER:001*IFT:INTR*NM:ROMAN%20GRIGRASCENKO*IBAN:CZ6101000001239196100257*BIC:KOMBCZPPXXX*CCY:EUR*MSG:Podpora%20ShotByLaro" alt="QR Kód EUR">
-                    <div class="account-details">
-                        IBAN: <span>CZ6101000001239196100257</span><br>
-                        BIC/SWIFT: <span>KOMBCZPPXXX</span>
+                    <div class="account-details" style="font-size: 0.9rem; padding: 0.5rem 0;">
+                        <span class="kb-brand">Komerční banka</span> (EUR)<br><br>
+                        IBAN:<br><span>CZ6101000001239196100257</span><br><br>
+                        BIC/SWIFT:<br><span>KOMBCZPPXXX</span>
                     </div>
                 </div>
             </div>
